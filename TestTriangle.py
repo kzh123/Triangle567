@@ -18,9 +18,23 @@ from Triangle import classifyTriangle
 class TestTriangles(unittest.TestCase):
     # define multiple sets of tests as functions with names that begin
 
-    def testInvalidTriangle(self):
-        self.assertEqual(classifyTriangle(201, 201, 201), "InvalidInput", "201,201,201 is invalid")
-        self.assertEqual(classifyTriangle("a", "b", "c"), "InvalidInput")
+    def testInvalidTriangleA(self):
+        self.assertEqual(classifyTriangle(201, 201, 201), "InvalidInput", "201,201,201 should return Invalid input")
+
+    def testInvalidTriangleB(self):
+        self.assertEqual(classifyTriangle(0, 0, 0), "InvalidInput")
+
+    def testNotInt(self):
+        self.assertEqual(classifyTriangle(1.3, 1.3, 1.3), "InvalidInput")
+
+    def testIsoceles(self):
+        self.assertEqual(classifyTriangle(1, 2, 2), "Isoceles")
+
+    def testScalene(self):
+        self.assertEqual(classifyTriangle(2, 3, 4), "Scalene")
+
+    def testNotTran(self):
+        self.assertEqual(classifyTriangle(1, 1, 2), "NotATriangle")
 
     def testRightTriangleA(self):
         self.assertEqual(classifyTriangle(3, 4, 5), 'Right', '3,4,5 is a Right triangle')
